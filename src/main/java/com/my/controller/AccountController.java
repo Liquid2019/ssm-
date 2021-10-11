@@ -34,4 +34,13 @@ public class AccountController {
         modelAndView.setViewName("accountList");
         return modelAndView;
     }
+
+    @RequestMapping("findAll1")
+    public String findAll1(){
+        List<Account> accountList = accountService.findAll();
+        if(ObjectUtils.isEmpty(accountList)){
+            return ApiResult.failed("查询失败");
+        }
+        return ApiResult.success(accountList,"查询成功");
+    }
 }
